@@ -29,7 +29,9 @@ int main()
 		}
 		if (USART_RX_STA&0x8000) {
 			printf("\r\n");
+			printf("**************************************\r\n");
 			printf("rec: %s\r\n", USART_RX_BUF);
+			printf("**************************************\r\n");
 			printf("\r\n");
 			USART_RX_STA = 0X0000;
 		}
