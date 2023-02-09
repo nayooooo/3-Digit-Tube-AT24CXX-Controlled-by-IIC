@@ -151,7 +151,7 @@ at24cxx_err_t AT24CXX_Write_MultiByte(uint16_t MemAddress, uint8_t *pData, uint1
 {
 #if AT24CXX_WRITE_MODE == AT24CXX_WRITE_BYTE_MODE
 	
-	uint8_t write_byte_num;  // 已写入字节数
+	uint16_t write_byte_num;  // 已写入字节数
 	
 	for (write_byte_num = 0; write_byte_num < Size; write_byte_num++) {
 		if (AT24CXX_OK != AT24CXX_Write_OneByte(MemAddress + write_byte_num, *(pData + write_byte_num)))

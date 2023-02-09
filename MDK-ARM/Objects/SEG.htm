@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\SEG.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\SEG.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Fri Feb 10 02:01:29 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Fri Feb 10 02:14:57 2023
 <BR><P>
 <H3>Maximum Stack Usage =        368 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1030,8 +1030,8 @@ Global Symbols
 <P><STRONG><a name="[9e]"></a>AT24CXX_Write_MultiByte</STRONG> (Thumb, 276 bytes, Stack size 40 bytes, at24cxx.o(.text.AT24CXX_Write_MultiByte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 284<LI>Call Chain = AT24CXX_Write_MultiByte &rArr; AT24CXX_Write &rArr; I2C2_Write &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed &rArr; I2C_Flush_TXDR
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AT24CXX_Write
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AT24CXX_Write
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1486,12 +1486,12 @@ Global Symbols
 <P><STRONG><a name="[e2]"></a>Seg_Show_Num</STRONG> (Thumb, 246 bytes, Stack size 56 bytes, seg.o(.text.Seg_Show_Num))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = Seg_Show_Num &rArr; delay_ms &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidiv
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Seg_Show_1_Num
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Seg_Clear
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;my_pow
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1597,6 +1597,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Seg_Show_Num
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AT24CXX_Write_MultiByte
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[ee]"></a>delay_us</STRONG> (Thumb, 136 bytes, Stack size 28 bytes, delay.o(.text.delay_us))
@@ -1610,7 +1611,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> _printf_char_file.o(.text)
 </UL>
-<P><STRONG><a name="[5c]"></a>main</STRONG> (Thumb, 208 bytes, Stack size 40 bytes, main.o(.text.main))
+<P><STRONG><a name="[5c]"></a>main</STRONG> (Thumb, 216 bytes, Stack size 40 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 324 + Unknown Stack Size
 <LI>Call Chain = main &rArr; AT24CXX_Write_MultiByte &rArr; AT24CXX_Write &rArr; I2C2_Write &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed &rArr; I2C_Flush_TXDR
 </UL>
@@ -1619,6 +1620,7 @@ Global Symbols
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AT24CXX_Read_MultiByte
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AT24CXX_Write_MultiByte
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AT24CXX_Print_Write_Buffer
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM14_Init
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AT24CXX_Init
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Seg_Init
