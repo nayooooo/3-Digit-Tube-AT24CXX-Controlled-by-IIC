@@ -178,7 +178,7 @@ at24cxx_err_t AT24CXX_Write_MultiByte(uint16_t MemAddress, uint8_t *pData, uint1
 		// 开始写入大量字节
 		while (page_num) {
 			// 写入一页数据
-			if (AT24CXX_OK != AT24CXX_Write(MemAddress + write_byte_num, pData + write_byte_num, EE_PAGE_SIZE))
+			if (AT24CXX_OK != AT24CXX_Write(MemAddress + write_byte_num, pData + write_byte_num, cwbn))
 				return AT24CXX_ERROR;
 			delay_ms(5);  // 写周期，最大5ms
 			// 写入完一页数据，准备写入下一页数据

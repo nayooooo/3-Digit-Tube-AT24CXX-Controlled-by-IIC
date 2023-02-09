@@ -22,9 +22,9 @@ int main()
 	
 	TIM14_Init(9, 1599);  // 1000Hz
 	
-	memset(EE_Write_Buffer, 0XAF, EE_SIZE);
+	memset(EE_Write_Buffer, 0X2C, EE_SIZE);
 	AT24CXX_Print_Write_Buffer();
-	AT24CXX_Write_MultiByte(0, EE_Write_Buffer, EE_SIZE);
+	AT24CXX_Write_MultiByte(9, EE_Write_Buffer, 10);
 	AT24CXX_Read_MultiByte(0, EE_Read_Buffer, EE_SIZE);
 	AT24CXX_Print_Read_Buffer();
 	
