@@ -4,6 +4,14 @@
 #include "sys.h"
 
 /*=================================================
+	AT24CXX≈‰÷√
+=================================================*/
+
+#define AT24CXX_WRITE_BYTE_MODE			(0)
+#define AT24CXX_WRITE_PAGE_MODE			(1)
+#define AT24CXX_WRITE_MODE				AT24CXX_WRITE_PAGE_MODE
+
+/*=================================================
 	AT24CXX—°–Õ
 =================================================*/
 
@@ -59,5 +67,6 @@ at24cxx_err_t AT24CXX_Write_OneByte(uint16_t MemAddress, uint8_t write_byte);
 at24cxx_err_t AT24CXX_Write_MultiByte(uint16_t MemAddress, uint8_t *pData, uint16_t Size);
 
 at24cxx_err_t AT24CXX_Print_Read_Buffer(void);
+at24cxx_err_t AT24CXX_Print_Write_Buffer(void);
 
 #endif /* __AT24CXX_H__ */

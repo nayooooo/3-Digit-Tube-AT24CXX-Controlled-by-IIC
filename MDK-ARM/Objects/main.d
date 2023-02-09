@@ -66,4 +66,5 @@
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   ..\Drivers\Core\tim\tim.h ..\Drivers\BSP\SEG\seg.h \
   ..\Drivers\BSP\AT24CXX\at24cxx.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h
