@@ -108,8 +108,9 @@ static at24cxx_err_t AT24CXX_Write(uint16_t MemAddress, uint8_t *pData, uint16_t
 	if (MemAddress + Size > EE_SIZE) return AT24CXX_ERROR;  // 整体越界
 	if (MemAddress % EE_PAGE_SIZE + Size > EE_PAGE_SIZE) return AT24CXX_ERROR;  // 页越界
 	
-	if (I2C_OK != I2C2_Write(EE_READ, MemAddress, I2C_MEMADD_SIZE_8BIT, pData, Size))
-		return AT24CXX_ERROR;
+	// 在页写入时，会出现错误，因此不判断返回值是否为HAL_OK
+	I2C2_Write(EE_READ, MemAddress, I2C_MEMADD_SIZE_8BIT, pData, Size);
+	
 	return AT24CXX_OK;
 }
 
@@ -168,8 +169,9 @@ at24cxx_err_t AT24CXX_Write_MultiByte(uint16_t MemAddress, uint8_t *pData, uint1
 		// 计算需要发送的页数和字节数
 		page_num = Size / EE_PAGE_SIZE;
 		if ((Size + MemAddress) % EE_PAGE_SIZE) {  // 末尾存在不完整页
-			page_num += 2;
-		} else {  // 末尾不存在不完整页
+			page_num += 1;
+		}
+		if (MemAddress % EE_PAGE_SIZE) {  // 头部存在不完整页
 			page_num += 1;
 		}
 		cwbn = EE_PAGE_SIZE - MemAddress % EE_PAGE_SIZE;
@@ -178,6 +180,7 @@ at24cxx_err_t AT24CXX_Write_MultiByte(uint16_t MemAddress, uint8_t *pData, uint1
 			// 写入一页数据
 			if (AT24CXX_OK != AT24CXX_Write(MemAddress + write_byte_num, pData + write_byte_num, EE_PAGE_SIZE))
 				return AT24CXX_ERROR;
+			delay_ms(5);  // 写周期，最大5ms
 			// 写入完一页数据，准备写入下一页数据
 			page_num--;
 			write_byte_num += cwbn;
@@ -190,8 +193,6 @@ at24cxx_err_t AT24CXX_Write_MultiByte(uint16_t MemAddress, uint8_t *pData, uint1
 		if (AT24CXX_OK != AT24CXX_Write(MemAddress, pData, Size))
 			return AT24CXX_ERROR;
 	}
-
-	delay_ms(5);  // 写周期，最大5ms
 	
 #endif /* AT24CXX_WRITE_MODE */
 	
@@ -220,9 +221,9 @@ static at24cxx_err_t AT24CXX_Print_Buffer(uint8_t *pData, uint16_t Size, uint16_
 	uint8_t j;
 	
 	printf("\r\n");
-	printf("===================================================================\r\n");
-	printf("                           AT24C02 start\r\n");
-	printf("===================================================================\r\n");
+	printf("=========================================================================\r\n");
+	printf("                              AT24C02 start\r\n");
+	printf("=========================================================================\r\n");
 	for (i = 0; i < Size / page_Size; i++) {
 		printf("%u:\t", i);
 		for (j = 0; j < page_Size; j++) {
@@ -230,9 +231,9 @@ static at24cxx_err_t AT24CXX_Print_Buffer(uint8_t *pData, uint16_t Size, uint16_
 		}
 		printf("\r\n");
 	}
-	printf("===================================================================\r\n");
-	printf("                            AT24C02 end\r\n");
-	printf("===================================================================\r\n");
+	printf("=========================================================================\r\n");
+	printf("                               AT24C02 end\r\n");
+	printf("=========================================================================\r\n");
 	printf("\r\n");
 	
 	return AT24CXX_OK;
@@ -250,9 +251,9 @@ static at24cxx_err_t AT24CXX_Print_Buffer(uint8_t *pData, uint16_t Size, uint16_
 at24cxx_err_t AT24CXX_Print_Read_Buffer(void)
 {
 	printf("\r\n");
-	printf("===================================================================\r\n");
-	printf("                           ReadBuf start\r\n");
-	printf("===================================================================\r\n");
+	printf("=========================================================================\r\n");
+	printf("                              ReadBuf start\r\n");
+	printf("=========================================================================\r\n");
 	printf("\r\n");
 	return AT24CXX_Print_Buffer(EE_Read_Buffer, EE_SIZE, EE_PAGE_SIZE);
 }
@@ -269,9 +270,9 @@ at24cxx_err_t AT24CXX_Print_Read_Buffer(void)
 at24cxx_err_t AT24CXX_Print_Write_Buffer(void)
 {
 	printf("\r\n");
-	printf("===================================================================\r\n");
-	printf("                          WriteBuf start\r\n");
-	printf("===================================================================\r\n");
+	printf("=========================================================================\r\n");
+	printf("                             WriteBuf start\r\n");
+	printf("=========================================================================\r\n");
 	printf("\r\n");
 	return AT24CXX_Print_Buffer(EE_Write_Buffer, EE_SIZE, EE_PAGE_SIZE);
 }

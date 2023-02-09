@@ -22,9 +22,9 @@ int main()
 	
 	TIM14_Init(9, 1599);  // 1000Hz
 	
-//	memset(EE_Write_Buffer, 0X3C, EE_SIZE);
-//	AT24CXX_Print_Write_Buffer();
-//	AT24CXX_Write_MultiByte(0, EE_Write_Buffer, EE_SIZE);
+	memset(EE_Write_Buffer, 0XAF, EE_SIZE);
+	AT24CXX_Print_Write_Buffer();
+	AT24CXX_Write_MultiByte(0, EE_Write_Buffer, EE_SIZE);
 	AT24CXX_Read_MultiByte(0, EE_Read_Buffer, EE_SIZE);
 	AT24CXX_Print_Read_Buffer();
 	
@@ -36,11 +36,8 @@ int main()
 			if (num >= 1000) num = 0;
 		}
 		if (USART_RX_STA&0x8000) {
-			printf("\r\n");
-			printf("**************************************\r\n");
-			printf("rec: %s\r\n", USART_RX_BUF);
-			printf("**************************************\r\n");
-			printf("\r\n");
+			AT24CXX_Read_MultiByte(0, EE_Read_Buffer, EE_SIZE);
+			AT24CXX_Print_Read_Buffer();
 			USART_RX_STA = 0X0000;
 		}
 		Seg_Show_Num(0, num, 3);

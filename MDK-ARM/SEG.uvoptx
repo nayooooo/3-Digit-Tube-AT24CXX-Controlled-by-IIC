@@ -153,12 +153,17 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>num</ItemText>
+          <ItemText>page_num</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>USART_RX_BUF[USART_RX_STA&amp;0X3FFF]</ItemText>
+          <ItemText>cwbn</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>write_byte_num</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
