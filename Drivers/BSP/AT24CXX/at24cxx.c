@@ -161,20 +161,31 @@ at24cxx_err_t AT24CXX_Write_MultiByte(uint16_t MemAddress, uint8_t *pData, uint1
 	
 #elif AT24CXX_WRITE_MODE == AT24CXX_WRITE_PAGE_MODE
 	
-	uint8_t page_num;  // 总共需要写入的页数
-	uint16_t cwbn;  // current_write_byte_num 当前需要写入的字节数
+	uint8_t page_num = 0;  // 总共需要写入的页数
+	uint16_t cwbn = 0;  // current_write_byte_num 当前需要写入的字节数
 	uint16_t write_byte_num = 0;  // 已写入字节数
 	
 	if (MemAddress % EE_PAGE_SIZE + Size > EE_PAGE_SIZE) {  // 存在越界问题
-		// 计算需要发送的页数和字节数
-		page_num = Size / EE_PAGE_SIZE;
-		if ((Size + MemAddress) % EE_PAGE_SIZE) {  // 末尾存在不完整页
-			page_num += 1;
-		}
-		if (MemAddress % EE_PAGE_SIZE) {  // 头部存在不完整页
-			page_num += 1;
-		}
+		// 计算需要发送的字节数和页数
 		cwbn = EE_PAGE_SIZE - MemAddress % EE_PAGE_SIZE;
+		page_num = Size / EE_PAGE_SIZE;
+		if ((cwbn == EE_PAGE_SIZE) && (Size % EE_PAGE_SIZE))  // 1 0
+			page_num += 1;
+		else if ((cwbn != EE_PAGE_SIZE) && (!((Size - cwbn) % EE_PAGE_SIZE)))  // 0 1
+			page_num += 1;
+		else if ((cwbn != EE_PAGE_SIZE) && ((Size - cwbn) % EE_PAGE_SIZE)\
+			&& (!(Size % EE_PAGE_SIZE)))  // 0 0 && 0 + 0 = 1
+			page_num += 1;
+		// 0 0 && 0 + 0 = 0 && 0 + 0 > 1
+		else if ((cwbn != EE_PAGE_SIZE) && ((Size - cwbn) % EE_PAGE_SIZE)\
+			&& (Size % EE_PAGE_SIZE) && (cwbn + (Size + MemAddress) % EE_PAGE_SIZE > EE_PAGE_SIZE))
+			page_num += 1;
+		// 0 0 && 0 + 0 = 0 && 0 + 0 < 1
+		else if ((cwbn != EE_PAGE_SIZE) && ((Size - cwbn) % EE_PAGE_SIZE)\
+			&& (Size % EE_PAGE_SIZE) && (cwbn + (Size + MemAddress) % EE_PAGE_SIZE < EE_PAGE_SIZE))
+			page_num += 2;
+		else // 1 1
+			page_num = page_num;
 		// 开始写入大量字节
 		while (page_num) {
 			// 写入一页数据
