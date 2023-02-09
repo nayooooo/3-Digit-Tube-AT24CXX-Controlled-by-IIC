@@ -21,7 +21,7 @@ int main()
 	
 	TIM14_Init(9, 1599);  // 1000Hz
 	
-	AT24CXX_Read(0, EE_Read_Buffer, EE_SIZE);
+	AT24CXX_Read_MultiByte(0, EE_Read_Buffer, EE_SIZE);
 	AT24CXX_Print_Read_Buffer();
 	
 	while(1)

@@ -16,17 +16,57 @@ uint8_t EE_Read_Buffer[EE_SIZE] = {0};
 =================================================*/
 
 /**
- * @fn at24cxx_err_t AT24CXX_Read(uint16_t MemAddress, uint8_t *pData, uint16_t Size)
- * @brief 读取AT24CXX内存内容
+ * @fn static at24cxx_err_t AT24CXX_Read(uint16_t MemAddress, uint8_t *pData, uint16_t Size)
+ * @brief 读取AT24CXX内存中的一字节
  *
  * @param [MemAddress] AT24CXX内存地址
  * @param [pData] 接收数据缓冲区指针
  * @param [Size] 接收数据数目
+ * @return [at24cxx_err_t] 函数执行状态
+ *			AT24CXX_OK		->		函数执行成功
+ *			AT24CXX_ERROR	->		函数执行失败
  *
  */
-at24cxx_err_t AT24CXX_Read(uint16_t MemAddress, uint8_t *pData, uint16_t Size)
+static at24cxx_err_t AT24CXX_Read(uint16_t MemAddress, uint8_t *pData, uint16_t Size)
 {
-	if ( I2C_OK != I2C2_Read(EE_READ, MemAddress, I2C_MEMADD_SIZE_8BIT, pData, Size))
+	if (I2C_OK != I2C2_Read(EE_READ, MemAddress, I2C_MEMADD_SIZE_8BIT, pData, Size))
+		return AT24CXX_ERROR;
+	return AT24CXX_OK;
+}
+
+/**
+ * @fn at24cxx_err_t AT24CXX_Read_OneByte(uint16_t MemAddress)
+ * @brief 读取AT24CXX内存中的一字节
+ *
+ * @param [MemAddress] AT24CXX内存地址
+ * @return [uint8_t] 读取到的字节数据
+ *
+ */
+uint8_t AT24CXX_Read_OneByte(uint16_t MemAddress)
+{
+	uint8_t rec_chr = 0X00;
+	
+	if ( I2C_OK != AT24CXX_Read(MemAddress, &rec_chr, 1))
+		return NULL;
+	
+	return rec_chr;
+}
+
+/**
+ * @fn at24cxx_err_t AT24CXX_Read_MultiByte(uint16_t MemAddress, uint8_t *pData, uint16_t Size)
+ * @brief 读取AT24CXX内存大量内容
+ *
+ * @param [MemAddress] AT24CXX内存地址
+ * @param [pData] 接收数据缓冲区指针
+ * @param [Size] 接收数据数目
+ * @return [at24cxx_err_t] 函数执行状态
+ *			AT24CXX_OK		->		函数执行成功
+ *			AT24CXX_ERROR	->		函数执行失败
+ *
+ */
+at24cxx_err_t AT24CXX_Read_MultiByte(uint16_t MemAddress, uint8_t *pData, uint16_t Size)
+{
+	if ( I2C_OK != AT24CXX_Read(MemAddress, pData, Size))
 		return AT24CXX_ERROR;
 	
 	return AT24CXX_OK;

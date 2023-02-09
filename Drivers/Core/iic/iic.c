@@ -22,6 +22,9 @@ I2C_HandleTypeDef hi2c2;  // IIC2句柄
  * @param [MemAddSize] 目标器件内存单位大小
  * @param [pData] 接收数据缓冲区指针
  * @param [Size] 接收数据数目
+ * @return [i2c_err_t] 函数执行状态
+ *			I2C_OK		->		函数执行成功
+ *			I2C_ERROR	->		函数执行失败
  *
  */
 i2c_err_t I2C2_Read(

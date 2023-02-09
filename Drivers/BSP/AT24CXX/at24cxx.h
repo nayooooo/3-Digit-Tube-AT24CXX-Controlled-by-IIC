@@ -48,7 +48,8 @@ typedef enum{
 
 at24cxx_err_t AT24CXX_Init(void);
 
-at24cxx_err_t AT24CXX_Read(uint16_t MemAddress, uint8_t *pData, uint16_t Size);
+uint8_t AT24CXX_Read_OneByte(uint16_t MemAddress);
+at24cxx_err_t AT24CXX_Read_MultiByte(uint16_t MemAddress, uint8_t *pData, uint16_t Size);
 
 at24cxx_err_t AT24CXX_Print_Read_Buffer(void);
 
