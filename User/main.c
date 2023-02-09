@@ -17,8 +17,12 @@ int main()
 	uart_init(115200UL);
 	
 	Seg_Init();
+	AT24CXX_Init();
 	
 	TIM14_Init(9, 1599);  // 1000Hz
+	
+	AT24CXX_Read(0, EE_Read_Buffer, EE_SIZE);
+	AT24CXX_Print_Read_Buffer();
 	
 	while(1)
 	{

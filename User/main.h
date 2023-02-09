@@ -8,6 +8,7 @@
 #include "tim.h"
 
 #include "seg.h"
+#include "at24cxx.h"
 
 typedef struct{
 	uint8_t LED_Flash_Task: 1;

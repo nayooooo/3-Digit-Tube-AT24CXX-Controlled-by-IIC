@@ -1,17 +1,120 @@
 #include "at24cxx.h"
 
+#include "stdio.h"
+
 #include "iic.h"
 
-static at24cxx_err_t AT24CXX_IIC_Config(void)
+/*=================================================
+	AT24CXX的BUFF
+=================================================*/
+
+uint8_t EE_Write_Buffer[EE_SIZE] = {0};
+uint8_t EE_Read_Buffer[EE_SIZE] = {0};
+
+/*=================================================
+	AT24CXX相关读写函数
+=================================================*/
+
+/**
+ * @fn at24cxx_err_t AT24CXX_Read(uint16_t MemAddress, uint8_t *pData, uint16_t Size)
+ * @brief 读取AT24CXX内存内容
+ *
+ * @param [MemAddress] AT24CXX内存地址
+ * @param [pData] 接收数据缓冲区指针
+ * @param [Size] 接收数据数目
+ *
+ */
+at24cxx_err_t AT24CXX_Read(uint16_t MemAddress, uint8_t *pData, uint16_t Size)
 {
-	if (IIC_Init() != IIC_OK) return AT24CXX_ERROR;
+	if ( I2C_OK != I2C2_Read(EE_READ, MemAddress, I2C_MEMADD_SIZE_8BIT, pData, Size))
+		return AT24CXX_ERROR;
 	
 	return AT24CXX_OK;
 }
 
-at24cxx_err_t AT24C02_Init(void)
+/*=================================================
+	AT24CXX相关调试函数
+=================================================*/
+
+/**
+ * @fn at24cxx_err_t AT24CXX_Print_Read_Buffer(void)
+ * @brief 打印AT24CXX的接收数据缓冲区内容
+ *
+ * @return [at24cxx_err_t] 函数执行状态
+ *			AT24CXX_OK		->		函数执行成功
+ *			AT24CXX_ERROR	->		函数执行失败
+ *
+ */
+at24cxx_err_t AT24CXX_Print_Read_Buffer(void)
 {
-	if (AT24CXX_IIC_Config() != AT24CXX_OK) return AT24CXX_ERROR;
+	uint16_t i;
+	uint8_t j;
+	
+	printf("\r\n");
+	printf("===================================================================\r\n");
+	printf("                           AT24C02 start\r\n");
+	printf("===================================================================\r\n");
+	for (i = 0; i < EE_SIZE / EE_PAGE_SIZE; i++) {
+		printf("%u:\t", i);
+		for (j = 0; j < EE_PAGE_SIZE; j++) {
+			printf("0X%X\t", EE_Read_Buffer[i * EE_PAGE_SIZE + j]);
+		}
+		printf("\r\n");
+	}
+	printf("===================================================================\r\n");
+	printf("                            AT24C02 end\r\n");
+	printf("===================================================================\r\n");
+	printf("\r\n");
 	
 	return AT24CXX_OK;
+}
+
+/*=================================================
+	AT24CXX初始化
+=================================================*/
+
+/**
+ * @fn static at24cxx_err_t AT24C02_I2C_Config(void)
+ * @brief 配置AT24C02的IIC
+ *
+ * @return [at24cxx_err_t] 函数执行状态
+ *			AT24CXX_OK		->		函数执行成功
+ *			AT24CXX_ERROR	->		函数执行失败
+ *
+ */
+static at24cxx_err_t AT24C02_I2C_Config(void)
+{
+	if (I2C2_Init() != I2C_OK) return AT24CXX_ERROR;
+	
+	return AT24CXX_OK;
+}
+
+/**
+ * @fn static at24cxx_err_t AT24C02_Init(void)
+ * @brief 初始化AT24C02
+ *
+ * @return [at24cxx_err_t] 函数执行状态
+ *			AT24CXX_OK		->		函数执行成功
+ *			AT24CXX_ERROR	->		函数执行失败
+ *
+ */
+static at24cxx_err_t AT24C02_Init(void)
+{
+	if (AT24C02_I2C_Config() != AT24CXX_OK) return AT24CXX_ERROR;
+	
+	return AT24CXX_OK;
+}
+
+/**
+ * @fn at24cxx_err_t AT24C02_Init(void)
+ * @brief 初始化AT24CXX
+ *
+ * @return [at24cxx_err_t] 函数执行状态
+ *			AT24CXX_OK		->		函数执行成功
+ *			AT24CXX_ERROR	->		函数执行失败
+ *
+ */
+at24cxx_err_t AT24CXX_Init(void)
+{
+	return AT24C02_Init();
 }

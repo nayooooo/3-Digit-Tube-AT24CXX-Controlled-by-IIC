@@ -65,4 +65,4 @@
   ..\User\main.h ..\Drivers\System\delay\delay.h \
   ..\Drivers\System\usart\usart.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  ..\Drivers\BSP\SEG\seg.h
+  ..\Drivers\BSP\SEG\seg.h ..\Drivers\BSP\AT24CXX\at24cxx.h
