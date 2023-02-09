@@ -20,6 +20,11 @@
 #define EE_SIZE						EE_TYPE
 
 #define AT24C02_PAGE_SIZE			(8)
+#define AT24C04_PAGE_SIZE			(16)
+#define AT24C08_PAGE_SIZE			(16)
+#define AT24C16_PAGE_SIZE			(16)
+#define AT24C32_PAGE_SIZE			(32)
+#define AT24C64_PAGE_SIZE			(32)
 #define EE_PAGE_SIZE				AT24C02_PAGE_SIZE
 
 #define EE_ADDR						(0XA0)
@@ -50,6 +55,8 @@ at24cxx_err_t AT24CXX_Init(void);
 
 uint8_t AT24CXX_Read_OneByte(uint16_t MemAddress);
 at24cxx_err_t AT24CXX_Read_MultiByte(uint16_t MemAddress, uint8_t *pData, uint16_t Size);
+at24cxx_err_t AT24CXX_Write_OneByte(uint16_t MemAddress, uint8_t write_byte);
+at24cxx_err_t AT24CXX_Write_MultiByte(uint16_t MemAddress, uint8_t *pData, uint16_t Size);
 
 at24cxx_err_t AT24CXX_Print_Read_Buffer(void);
 

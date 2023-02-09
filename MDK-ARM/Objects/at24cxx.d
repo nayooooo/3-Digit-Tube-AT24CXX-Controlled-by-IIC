@@ -64,4 +64,4 @@
   ..\Drivers\STM32G0xx_HAL_Driver\Inc\stm32g0xx_hal_usart_ex.h \
   ..\Drivers\STM32G0xx_HAL_Driver\Inc\stm32g0xx_hal_wwdg.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  ..\Drivers\Core\iic\iic.h
+  ..\Drivers\System\delay\delay.h ..\Drivers\Core\iic\iic.h

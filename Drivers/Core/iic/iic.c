@@ -38,6 +38,34 @@ i2c_err_t I2C2_Read(
 	return I2C_OK;
 }
 
+/**
+ * @fn i2c_err_t I2C2_Write(
+ * 	uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize,
+ * 	uint8_t *pData, uint16_t Size
+ * )
+ * @brief 向目标地址写入大量数据
+ *
+ * @param [DevAddress] 目标器件地址
+ * @param [MemAddress] 目标器件内存地址
+ * @param [MemAddSize] 目标器件内存单位大小
+ * @param [pData] 写入数据缓冲区指针
+ * @param [Size] 写入数据数目
+ * @return [i2c_err_t] 函数执行状态
+ *			I2C_OK		->		函数执行成功
+ *			I2C_ERROR	->		函数执行失败
+ *
+ */
+i2c_err_t I2C2_Write(
+	uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize,
+	uint8_t *pData, uint16_t Size
+)
+{
+	if (HAL_OK != HAL_I2C_Mem_Write(&hi2c2, DevAddress, MemAddress, MemAddSize, pData, Size, 10))
+		return I2C_ERROR;
+	
+	return I2C_OK;
+}
+
 /*=================================================
 	I2C初始化
 =================================================*/

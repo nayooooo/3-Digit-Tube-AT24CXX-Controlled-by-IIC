@@ -28,5 +28,9 @@ i2c_err_t I2C2_Read(
 	uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize,
 	uint8_t *pData, uint16_t Size
 );
+i2c_err_t I2C2_Write(
+	uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize,
+	uint8_t *pData, uint16_t Size
+);
 
 #endif /* __IIC_H__ */

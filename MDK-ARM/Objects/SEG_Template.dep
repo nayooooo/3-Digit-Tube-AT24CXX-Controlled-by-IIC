@@ -1,7 +1,7 @@
 Dependencies for Project 'SEG', Target 'Template': (DO NOT MODIFY !)
 CompilerVersion: 6190000::V6.19::ARMCLANG
 F (..\Drivers\CMSIS\startup_stm32g030xx.s)(0x63D29D80)(--target=arm-arm-none-eabi -mcpu=cortex-m0plus -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4-ID:/Users/YEWAN/AppData/Local/Arm/Packs/Keil/STM32G0xx_DFP/1.4.0/Drivers/CMSIS/Device/ST/STM32G0xx/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 538" -Wa,armasm,--pd,"STM32G030xx SETA 1"-o ./objects/startup_stm32g030xx.o)
-F (..\User\main.c)(0x63E4F7DE)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Drivers/CMSIS -I ../Drivers/STM32G0xx_HAL_Driver/Inc -I ../Drivers/System/sys -I ../Drivers/System/delay -I ../Drivers/System/usart -I ../Drivers/Core/tim -I ../Drivers/Core/iic -I ../User -I ../Drivers/BSP/LED -I ../Drivers/BSP/SEG -I ../Drivers/BSP/AT24CXX-ID:/Users/YEWAN/AppData/Local/Arm/Packs/Keil/STM32G0xx_DFP/1.4.0/Drivers/CMSIS/Device/ST/STM32G0xx/Include-D__UVISION_VERSION="538" -DSTM32G030xx -DUSE_HAL_DRIVER-o ./objects/main.o -MD)
+F (..\User\main.c)(0x63E51ADA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Drivers/CMSIS -I ../Drivers/STM32G0xx_HAL_Driver/Inc -I ../Drivers/System/sys -I ../Drivers/System/delay -I ../Drivers/System/usart -I ../Drivers/Core/tim -I ../Drivers/Core/iic -I ../User -I ../Drivers/BSP/LED -I ../Drivers/BSP/SEG -I ../Drivers/BSP/AT24CXX-ID:/Users/YEWAN/AppData/Local/Arm/Packs/Keil/STM32G0xx_DFP/1.4.0/Drivers/CMSIS/Device/ST/STM32G0xx/Include-D__UVISION_VERSION="538" -DSTM32G030xx -DUSE_HAL_DRIVER-o ./objects/main.o -MD)
 I (..\User\main.h)(0x63E4F294)
 I (..\Drivers\System\sys\sys.h)(0x63DFE392)
 I (..\Drivers\CMSIS\stm32g0xx.h)(0x60D1698C)
@@ -75,7 +75,7 @@ I (..\Drivers\System\usart\usart.h)(0x63E3EC1E)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x637AECBC)
 I (..\Drivers\Core\tim\tim.h)(0x63DE71E0)
 I (..\Drivers\BSP\SEG\seg.h)(0x63E344BE)
-I (..\Drivers\BSP\AT24CXX\at24cxx.h)(0x63E4F7DE)
+I (..\Drivers\BSP\AT24CXX\at24cxx.h)(0x63E51D37)
 I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x637AECBC)
 F (..\User\stm32g0xx_it.c)(0x63D040A1)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Drivers/CMSIS -I ../Drivers/STM32G0xx_HAL_Driver/Inc -I ../Drivers/System/sys -I ../Drivers/System/delay -I ../Drivers/System/usart -I ../Drivers/Core/tim -I ../Drivers/Core/iic -I ../User -I ../Drivers/BSP/LED -I ../Drivers/BSP/SEG -I ../Drivers/BSP/AT24CXX-ID:/Users/YEWAN/AppData/Local/Arm/Packs/Keil/STM32G0xx_DFP/1.4.0/Drivers/CMSIS/Device/ST/STM32G0xx/Include-D__UVISION_VERSION="538" -DSTM32G030xx -DUSE_HAL_DRIVER-o ./objects/stm32g0xx_it.o -MD)
 I (..\Drivers\STM32G0xx_HAL_Driver\Inc\stm32g0xx_hal.h)(0x60D16A08)
@@ -1634,9 +1634,9 @@ I (..\Drivers\System\delay\delay.h)(0x63D2D1FC)
 I (..\Drivers\System\usart\usart.h)(0x63E3EC1E)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x637AECBC)
 I (..\Drivers\BSP\SEG\seg.h)(0x63E344BE)
-I (..\Drivers\BSP\AT24CXX\at24cxx.h)(0x63E4F7DE)
-F (..\Drivers\Core\iic\iic.c)(0x63E4F7DE)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Drivers/CMSIS -I ../Drivers/STM32G0xx_HAL_Driver/Inc -I ../Drivers/System/sys -I ../Drivers/System/delay -I ../Drivers/System/usart -I ../Drivers/Core/tim -I ../Drivers/Core/iic -I ../User -I ../Drivers/BSP/LED -I ../Drivers/BSP/SEG -I ../Drivers/BSP/AT24CXX-ID:/Users/YEWAN/AppData/Local/Arm/Packs/Keil/STM32G0xx_DFP/1.4.0/Drivers/CMSIS/Device/ST/STM32G0xx/Include-D__UVISION_VERSION="538" -DSTM32G030xx -DUSE_HAL_DRIVER-o ./objects/iic.o -MD)
-I (..\Drivers\Core\iic\iic.h)(0x63E4F294)
+I (..\Drivers\BSP\AT24CXX\at24cxx.h)(0x63E51D37)
+F (..\Drivers\Core\iic\iic.c)(0x63E516AA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Drivers/CMSIS -I ../Drivers/STM32G0xx_HAL_Driver/Inc -I ../Drivers/System/sys -I ../Drivers/System/delay -I ../Drivers/System/usart -I ../Drivers/Core/tim -I ../Drivers/Core/iic -I ../User -I ../Drivers/BSP/LED -I ../Drivers/BSP/SEG -I ../Drivers/BSP/AT24CXX-ID:/Users/YEWAN/AppData/Local/Arm/Packs/Keil/STM32G0xx_DFP/1.4.0/Drivers/CMSIS/Device/ST/STM32G0xx/Include-D__UVISION_VERSION="538" -DSTM32G030xx -DUSE_HAL_DRIVER-o ./objects/iic.o -MD)
+I (..\Drivers\Core\iic\iic.h)(0x63E516AA)
 I (..\Drivers\System\sys\sys.h)(0x63DFE392)
 I (..\Drivers\CMSIS\stm32g0xx.h)(0x60D1698C)
 I (..\Drivers\CMSIS\stm32g030xx.h)(0x60D1698C)
@@ -1843,8 +1843,8 @@ I (..\Drivers\STM32G0xx_HAL_Driver\Inc\stm32g0xx_hal_usart.h)(0x60D16A6A)
 I (..\Drivers\STM32G0xx_HAL_Driver\Inc\stm32g0xx_hal_usart_ex.h)(0x60D16A6A)
 I (..\Drivers\STM32G0xx_HAL_Driver\Inc\stm32g0xx_hal_wwdg.h)(0x60D16A7A)
 I (..\Drivers\System\delay\delay.h)(0x63D2D1FC)
-F (..\Drivers\BSP\AT24CXX\at24cxx.c)(0x63E4F807)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Drivers/CMSIS -I ../Drivers/STM32G0xx_HAL_Driver/Inc -I ../Drivers/System/sys -I ../Drivers/System/delay -I ../Drivers/System/usart -I ../Drivers/Core/tim -I ../Drivers/Core/iic -I ../User -I ../Drivers/BSP/LED -I ../Drivers/BSP/SEG -I ../Drivers/BSP/AT24CXX-ID:/Users/YEWAN/AppData/Local/Arm/Packs/Keil/STM32G0xx_DFP/1.4.0/Drivers/CMSIS/Device/ST/STM32G0xx/Include-D__UVISION_VERSION="538" -DSTM32G030xx -DUSE_HAL_DRIVER-o ./objects/at24cxx.o -MD)
-I (..\Drivers\BSP\AT24CXX\at24cxx.h)(0x63E4F7DE)
+F (..\Drivers\BSP\AT24CXX\at24cxx.c)(0x63E51CA3)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Drivers/CMSIS -I ../Drivers/STM32G0xx_HAL_Driver/Inc -I ../Drivers/System/sys -I ../Drivers/System/delay -I ../Drivers/System/usart -I ../Drivers/Core/tim -I ../Drivers/Core/iic -I ../User -I ../Drivers/BSP/LED -I ../Drivers/BSP/SEG -I ../Drivers/BSP/AT24CXX-ID:/Users/YEWAN/AppData/Local/Arm/Packs/Keil/STM32G0xx_DFP/1.4.0/Drivers/CMSIS/Device/ST/STM32G0xx/Include-D__UVISION_VERSION="538" -DSTM32G030xx -DUSE_HAL_DRIVER-o ./objects/at24cxx.o -MD)
+I (..\Drivers\BSP\AT24CXX\at24cxx.h)(0x63E51D37)
 I (..\Drivers\System\sys\sys.h)(0x63DFE392)
 I (..\Drivers\CMSIS\stm32g0xx.h)(0x60D1698C)
 I (..\Drivers\CMSIS\stm32g030xx.h)(0x60D1698C)
@@ -1913,4 +1913,5 @@ I (..\Drivers\STM32G0xx_HAL_Driver\Inc\stm32g0xx_hal_usart.h)(0x60D16A6A)
 I (..\Drivers\STM32G0xx_HAL_Driver\Inc\stm32g0xx_hal_usart_ex.h)(0x60D16A6A)
 I (..\Drivers\STM32G0xx_HAL_Driver\Inc\stm32g0xx_hal_wwdg.h)(0x60D16A7A)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x637AECBC)
-I (..\Drivers\Core\iic\iic.h)(0x63E4F294)
+I (..\Drivers\System\delay\delay.h)(0x63D2D1FC)
+I (..\Drivers\Core\iic\iic.h)(0x63E516AA)
