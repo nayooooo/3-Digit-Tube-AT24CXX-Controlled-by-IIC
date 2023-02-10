@@ -17,6 +17,8 @@ typedef enum{
 =================================================*/
 
 extern I2C_HandleTypeDef hi2c2;  // IIC2¾ä±ú
+#define I2C2_RECEIVE_BUFF_SIZE			(200)
+extern uint8_t I2C2_Receive_Buff[I2C2_RECEIVE_BUFF_SIZE];
 
 /*=================================================
 	I2CÏà¹Øº¯Êý

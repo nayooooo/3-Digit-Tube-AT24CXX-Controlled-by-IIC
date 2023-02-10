@@ -22,12 +22,6 @@ int main()
 	
 	TIM14_Init(9, 1599);  // 1000Hz
 	
-//	memset(EE_Write_Buffer, 0XAA, EE_SIZE);
-//	AT24CXX_Print_Write_Buffer();
-//	AT24CXX_Write_MultiByte(11, EE_Write_Buffer, 28);
-	AT24CXX_Read_MultiByte(0, EE_Read_Buffer, EE_SIZE);
-	AT24CXX_Print_Read_Buffer();
-	
 	while(1)
 	{
 		if (main_Task_Flag.Seg_Count_Task) {

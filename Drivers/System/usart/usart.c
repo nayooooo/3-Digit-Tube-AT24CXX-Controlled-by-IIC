@@ -133,13 +133,13 @@ void uart_init(uint32_t bound)
 	huart1.Init.Mode=UART_MODE_TX_RX;		    	//收发模式
 	HAL_UART_Init(&huart1);					    	//HAL_UART_Init()会使能UART1
 	
+	HAL_UART_Receive_IT(&huart1, (uint8_t *)_1RxBuffer, _1RXBUFFERSIZE);
+	
 	printf("\r\n");
 	printf("***************************************************\r\n");
 	printf("       STM32G030F6P6 USART1 has initialized!\r\n");
 	printf("***************************************************\r\n");
 	printf("\r\n");
-	
-	HAL_UART_Receive_IT(&huart1, (uint8_t *)_1RxBuffer, _1RXBUFFERSIZE);
 }
  
 //串口1中断服务程序

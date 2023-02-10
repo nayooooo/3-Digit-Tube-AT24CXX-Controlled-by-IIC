@@ -5,6 +5,7 @@
 =================================================*/
 
 I2C_HandleTypeDef hi2c2;  // IIC2¾ä±ú
+uint8_t I2C2_Receive_Buff[I2C2_RECEIVE_BUFF_SIZE] = {0};
 
 /*=================================================
 	I2CÏà¹Ø¶ÁÐ´º¯Êý
@@ -74,7 +75,7 @@ i2c_err_t I2C2_Init(void)
 {
 	hi2c2.Instance = I2C2;
 	hi2c2.Init.Timing = 0x00303D5B;
-	hi2c2.Init.OwnAddress1 = 0;
+	hi2c2.Init.OwnAddress1 = 0XBE;  // Bits 7:1
 	hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
 	hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
 	hi2c2.Init.OwnAddress2 = 0;
@@ -103,6 +104,8 @@ i2c_err_t I2C2_Init(void)
 		return I2C_ERROR;
 	}
 	
+	while (HAL_OK == HAL_I2C_Slave_Receive_IT(&hi2c2, I2C2_Receive_Buff, I2C2_RECEIVE_BUFF_SIZE)) {}
+	
 	return I2C_OK;
 }
 
@@ -126,5 +129,17 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef *hi2c)
 
 		/* I2C2 clock enable */
 		__HAL_RCC_I2C2_CLK_ENABLE();
+	}
+}
+
+void I2C2_IRQHandler(void)
+{
+	HAL_I2C_EV_IRQHandler(&hi2c2);
+}
+
+void HAL_I2C_SlaveRxCpltCallback(I2C_HandleTypeDef *hi2c)
+{
+	if (hi2c->Instance == I2C2) {
+		;
 	}
 }
