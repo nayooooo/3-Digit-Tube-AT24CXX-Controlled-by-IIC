@@ -20,7 +20,7 @@ int main()
 	
 	/* BSP */
 	Seg_Init();
-	AT24CXX_Init();
+	AT24CXX_Init();  // “—≥ı ºªØI2C2
 	
 	/* Core */
 	TIM14_Init(9, 1599);  // 1000Hz

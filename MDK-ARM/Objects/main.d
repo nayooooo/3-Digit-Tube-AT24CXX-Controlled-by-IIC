@@ -64,7 +64,7 @@
   ..\Drivers\STM32G0xx_HAL_Driver\Inc\stm32g0xx_hal_wwdg.h \
   ..\Drivers\System\delay\delay.h ..\Drivers\System\usart\usart.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  ..\Drivers\Core\tim\tim.h ..\Drivers\BSP\SEG\seg.h \
-  ..\Drivers\BSP\AT24CXX\at24cxx.h \
+  ..\Drivers\Core\tim\tim.h ..\Drivers\Core\iic\iic.h \
+  ..\Drivers\BSP\SEG\seg.h ..\Drivers\BSP\AT24CXX\at24cxx.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h

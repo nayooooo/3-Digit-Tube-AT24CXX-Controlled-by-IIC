@@ -6,6 +6,7 @@
 #include "usart.h"
 
 #include "tim.h"
+#include "iic.h"
 
 #include "seg.h"
 #include "at24cxx.h"

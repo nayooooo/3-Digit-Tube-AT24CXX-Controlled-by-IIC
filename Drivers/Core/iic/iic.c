@@ -1,5 +1,7 @@
 #include "iic.h"
 
+#include "string.h"
+
 /*=================================================
 	I2C相关变量
 =================================================*/
@@ -104,7 +106,7 @@ i2c_err_t I2C2_Init(void)
 		return I2C_ERROR;
 	}
 	
-	while (HAL_OK == HAL_I2C_Slave_Receive_IT(&hi2c2, I2C2_Receive_Buff, I2C2_RECEIVE_BUFF_SIZE)) {}
+	while (HAL_OK != HAL_I2C_Slave_Receive_IT(&hi2c2, I2C2_Receive_Buff, I2C2_RECEIVE_BUFF_SIZE)) {}
 	
 	return I2C_OK;
 }
@@ -129,17 +131,40 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef *hi2c)
 
 		/* I2C2 clock enable */
 		__HAL_RCC_I2C2_CLK_ENABLE();
+		
+		/* I2C2 interrupt Init */
+		HAL_NVIC_SetPriority(I2C2_IRQn, 0, NULL);
+		HAL_NVIC_EnableIRQ(I2C2_IRQn);
 	}
 }
 
 void I2C2_IRQHandler(void)
 {
+	uint32_t timeout = 0;
+	
+#if SYSTEM_SUPPORT_OS	 	//使用OS
+	OSIntEnter();    
+#endif
+	
 	HAL_I2C_EV_IRQHandler(&hi2c2);
+	
+	while (HAL_OK != HAL_I2C_Slave_Receive_IT(&hi2c2, I2C2_Receive_Buff, I2C2_RECEIVE_BUFF_SIZE)) {
+		timeout++;
+		if (timeout > HAL_MAX_DELAY) break;
+	}
+	
+#if SYSTEM_SUPPORT_OS	 	//使用OS
+	OSIntExit();
+#endif
 }
 
 void HAL_I2C_SlaveRxCpltCallback(I2C_HandleTypeDef *hi2c)
 {
-	if (hi2c->Instance == I2C2) {
+	if (hi2c->Instance == I2C2) {  // 如果是I2C2
+		// 处理接收数据
 		;
+		
+		// 重置接收缓存
+		memset(I2C2_Receive_Buff, 0, I2C2_RECEIVE_BUFF_SIZE);
 	}
 }
